@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-     	<Text style={styles.text}>Hey And Welcome Again</Text>
+     	<Text style={styles.text}>Hey And Welcome Again day 2 Without Nothing Wait For change</Text>
     </View>
   );
 }
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     flex : 1,
     backgroundColor : colors.color1,
     paddingTop :Platform.OS === 'ios' ? paddingSizes.sm : paddingSizes.md,
-    
+
   },
   text : {
     color : '#ffffff',
