@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-     	<Text style={styles.text}>Hey And Welcome Again day 2 Without Nothing Wait For change</Text>
+     	<Text style={styles.text}>Hey And Welcome Again day 3 Without Nothing Wait For change</Text>
     </View>
   );
 }
