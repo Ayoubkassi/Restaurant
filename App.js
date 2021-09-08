@@ -1,6 +1,8 @@
 import  React from 'react';
 import { Text, View, StyleSheet , Platform , SafeAreaView , StatusBar } from 'react-native';
 import Constants from 'expo-constants';
+import { Searchbar } from 'react-native-paper';
+
 
 
 //safe areaview katkhli lik blassa lta7t olfo9 b7al chkel iphone 11 , blassa dial lcam oblassa dial down nav
@@ -18,11 +20,11 @@ export default function App() {
 
   return (
     <>
-      <SafeAreaView style={styles.container , marginTop : StatusBar.currentHeight >
-        <View style={{ padding: 16 , backgroundColor : "green"}}>
-          <Text>Search</Text>
+      <SafeAreaView style={styles.container  >
+        <View style={ styles.search }>
+          <Searchbar />
         </View>
-        <View style={{ flex : 1,padding : 16 , backgroundColor : "blue"}}>
+        <View style={ styles.list }>
           <Text>List</Text>
         </View>
       </SafeAreaView>
@@ -33,7 +35,17 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex : 1
+    flex : 1,
+     marginTop : StatusBar.currentHeight
+  },
+  search : {
+    padding: 16 ,
+    backgroundColor : "green"
+  },
+  list : {
+    flex : 1,
+    padding : 16 ,
+    backgroundColor : "blue"
   }
 
 });
