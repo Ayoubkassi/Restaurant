@@ -10,13 +10,32 @@ import { theme } from './infrastructure/theme/index';
 //statusBar.currentHeight : katrje3 lheight f android w 0 fl ios
 //so we don't need isAndroid
 
+import {
+  useFonts as useOswald,
+  Oswald_400Regular,
+} from '@expo-google-fonts/oswald';
 
+import {
+  useFonts as useLato,
+  Lato_400Regular,
+} from '@expo-google-fonts/lato';
 
 
 const isAndroid = Platform.OS === 'android';
 
 export default function App() {
 
+const [oswaldLoaded] = useOswald({
+  Oswald_400Regular,
+});
+
+const [latoLoaded] = useLato({
+  Lato_400Regular,
+});
+
+if(!oswaldLoaded || !latoLoaded){
+  return null;
+}
   return (
     <>
       <ThemeProvider theme={theme}>

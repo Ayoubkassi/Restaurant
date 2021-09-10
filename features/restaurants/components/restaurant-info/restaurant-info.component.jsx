@@ -6,6 +6,7 @@ import styled from 'styled-components/native';
 const Title = styled.Text`
   padding : ${(props) => props.theme.space[3]};
   color : ${props => props.theme.colors.ui.primary};
+  font-familly : ${(props) => props.theme.fonts.body};
 `;
 
 const RestaurantCard = styled(Card)`
