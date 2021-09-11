@@ -1,4 +1,6 @@
-# Focus
+# Restaurant App
+
+Create Mobile Restaurant App using React Native
 
 Here's App Image Preview:
 
