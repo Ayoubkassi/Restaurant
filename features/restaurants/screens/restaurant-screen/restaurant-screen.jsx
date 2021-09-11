@@ -5,13 +5,8 @@ import { RestaurantInfoCard } from '../../components/restaurant-info/restaurant-
 import styled from 'styled-components/native';
 import { FlatList } from 'react-native';
 import { Spacer } from '../../../../components/spacer/spacer.component';
+import { SafeArea } from '../../../../components/safe-area/safe-area.component';
 
-
-const SafeArea = styled(SafeAreaView)`
-  flex : 1;
-  ${StatusBar.currentHeight && `margin-top : ${StatusBar.currentHeight}px`};
-
-`;
 
 const SearchContainer = styled.View`
   padding : ${(props) => props.theme.space[3]};
@@ -21,7 +16,10 @@ const RestaurantList = styled(FlatList).attrs({
   contentConatinerStyle : {
     padding : 16,
   },
-})``;
+})`
+ /*margin-bottom : ${(props) => props.theme.space[5]}; */
+ /*using this one up if we want to remove flex 1 from the SafeArea */
+`;
 
 
 export const RestaurantsScreen = () => {
