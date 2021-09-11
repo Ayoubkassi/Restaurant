@@ -1,8 +1,14 @@
 import  React from 'react';
 import { Text, View, StyleSheet , Platform , StatusBar } from 'react-native';
 import { RestaurantsScreen  } from './features/restaurants/screens/restaurant-screen/restaurant-screen';
+import { MapScreen  } from './features/restaurants/screens/map-screen/map-screen';
+import { SettingsScreen  } from './features/restaurants/screens/setting-screen/setting-screen';
 import { ThemeProvider } from 'styled-components/native';
 import { theme } from './infrastructure/theme/index';
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { SafeArea } from './components/safe-area/safe-area.component';
+import { Ionicons } from 'react-native-vector-icons/Ionicons';
 
 //safe areaview katkhli lik blassa lta7t olfo9 b7al chkel iphone 11 , blassa dial lcam oblassa dial down nav
 //ila gama drna flex : 1 , kib9a kikber 3la 7ssab lcontent , but flex 1 , kiyakhd all screen , without overflow
@@ -23,6 +29,62 @@ import {
 
 const isAndroid = Platform.OS === 'android';
 
+const TAB_ICON = {
+  Restaurants : "md-restaurant",
+  Map : "md-map",
+  Settings : "md-settings"
+}
+
+const Tab = createBottomTabNavigator();
+
+const tabBarIcon = () => {
+  return <Ionicons name ={iconName} size={size} color={color} />;
+}
+
+const createScreenOptions = ({ route }) => {
+  const iconName = TAB_ICON[route.name];
+  return {
+    tabBarIcon : ({ size , color}) => (
+      <Ionicons name ={iconName} size={size} color={color} />
+    ),
+  }
+}
+
+/*({ route }) => ({
+  tabBarIcon : ({ color , size}) => {
+    let iconName;
+
+    if(route.name === "Restaurants"){
+      iconName = "md-restaurant";
+    }
+    else if(route.name === "Settings"){
+      iconName = "md-settings";
+    }
+    else if (route.name === "Map"){
+      iconName = "md-map";
+    }
+
+
+  },
+})*/
+
+const MyTabs = () => {
+  return (
+    <Tab.Navigator
+      screenOptions = {createScreenOptions}
+      tabBarOptions = {{
+        activeTinColor = "tomato",
+        inactiveTinColor = "gray",
+      }}
+    >
+      <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Map" component={MapScreen} />
+    </Tab.Navigator>
+  )
+}
+
+
 export default function App() {
 
 const [oswaldLoaded] = useOswald({
@@ -39,7 +101,9 @@ if(!oswaldLoaded || !latoLoaded){
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantsScreen />
+        <NavigationContainer>
+          <MyTabs />
+        </NavigationContainer>
       </ThemeProvider>
       <StatusBar style="auto" />
     </>
