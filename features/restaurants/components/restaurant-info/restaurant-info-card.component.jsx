@@ -6,6 +6,7 @@ import star from '../../../../assets/star';
 import open from '../../../../assets/open';
 import { Text } from '../../../../components/typography/text.component';
 import { Image } from 'react-native';
+import { Spacer } from '../../../../components/spacer/spacer.component';
 
 import { RestaurantCard,
          RestaurantCardCover,
