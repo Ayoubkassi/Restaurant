@@ -3,9 +3,9 @@ import React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { SafeArea } from '../../components/safe-area/safe-area.component';
 import { Ionicons } from 'react-native-vector-icons/Ionicons';
-import { RestaurantsScreen  } from '../../features/restaurants/screens/restaurant-screen/restaurant-screen';
 import { MapScreen  } from '../../features/restaurants/screens/map-screen/map-screen';
 import { SettingsScreen  } from '../../features/restaurants/screens/setting-screen/setting-screen';
+import { RestaurantsNavigator } from './restaurants.navigator';
 
 const tabBarIcon = () => {
   return <Ionicons name ={iconName} size={size} color={color} />;
@@ -32,7 +32,7 @@ export const AppNavigator = () => {
         inactiveTinColor = "gray",
       }}
     >
-      <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+      <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
       <Tab.Screen name="Map" component={MapScreen} />
     </Tab.Navigator>
