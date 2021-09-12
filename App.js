@@ -11,6 +11,7 @@ import { SafeArea } from './components/safe-area/safe-area.component';
 import { Ionicons } from 'react-native-vector-icons/Ionicons';
 
 import { RestaurantsContextProvider } from './services/services/restaurants.context';
+import { LocationContextProvider } from './services/location/location.context';
 //safe areaview katkhli lik blassa lta7t olfo9 b7al chkel iphone 11 , blassa dial lcam oblassa dial down nav
 //ila gama drna flex : 1 , kib9a kikber 3la 7ssab lcontent , but flex 1 , kiyakhd all screen , without overflow
 //but safe irea view gama kayna f android
@@ -102,11 +103,13 @@ if(!oswaldLoaded || !latoLoaded){
   return (
     <>
       <ThemeProvider theme={theme}>
+      <LocationContextProvider>
         <RestaurantsContextProvider>
           <NavigationContainer>
             <MyTabs />
           </NavigationContainer>
         </RestaurantsContextProvider>
+        </LocationContextProvider>
       </ThemeProvider>
       <StatusBar style="auto" />
     </>
