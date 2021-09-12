@@ -3,7 +3,7 @@ import { Text , View , SafeAreaView , StyleSheet } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import { RestaurantInfoCard } from '../../components/restaurant-info/restaurant-info-card.component';
 import styled from 'styled-components/native';
-import { FlatList , Pressable} from 'react-native';
+import { FlatList , TouchableOpacity } from 'react-native';
 import { Spacer } from '../../../../components/spacer/spacer.component';
 import { SafeArea } from '../../../../components/safe-area/safe-area.component';
 import { useContext } from 'react';
@@ -59,11 +59,13 @@ export const RestaurantsScreen = ({ navigation }) => {
         renderItem = {({ item }) => {
 
                   return(
-                    <Pressable onPress={()=> navigation.navigate("RestaurantDetail")}>
+                    <TouchableOpacity
+                      onPress={()=> navigation.navigate("RestaurantDetail")}
+                    >
                         <Spacer position="bottom" size="large">
                           <RestaurantInfoCard restaurant={item} />
                         </Spacer>
-                    </Pressable>
+                    </TouchableOpacity>
                       );
                       }}
         keyExtractor = {(item) => item.name }
