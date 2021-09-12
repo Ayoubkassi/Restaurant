@@ -9,7 +9,7 @@ import { SafeArea } from '../../../../components/safe-area/safe-area.component';
 import { useContext } from 'react';
 import { RestaurantsContext } from '../../../../services/restaurants/restaurants.context';
 import { ActivityIndicator , Colors } from 'react-native-paper';
-
+import { Search } from '../../components/search/search.component';
 
 
 const SearchContainer = styled.View`
@@ -53,9 +53,7 @@ export const RestaurantsScreen = () => {
         </LoadingContainer>
       )
     }
-      <SearchContainer>
-        <Searchbar />
-      </SearchContainer>
+      <Search />
       <RestaurantList
         data= { restaurants }
         renderItem = {({ item }) => {
