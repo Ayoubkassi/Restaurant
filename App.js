@@ -1,8 +1,5 @@
 import  React from 'react';
 import { Text, View, StyleSheet , Platform , StatusBar } from 'react-native';
-import { RestaurantsScreen  } from './features/restaurants/screens/restaurant-screen/restaurant-screen';
-import { MapScreen  } from './features/restaurants/screens/map-screen/map-screen';
-import { SettingsScreen  } from './features/restaurants/screens/setting-screen/setting-screen';
 import { ThemeProvider } from 'styled-components/native';
 import { theme } from './infrastructure/theme/index';
 import { NavigationContainer } from "@react-navigation/native";
@@ -10,6 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeArea } from './components/safe-area/safe-area.component';
 import { Ionicons } from 'react-native-vector-icons/Ionicons';
 
+import { Navigation } from './infrastructure/navigation/index';
 import { RestaurantsContextProvider } from './services/services/restaurants.context';
 import { LocationContextProvider } from './services/location/location.context';
 //safe areaview katkhli lik blassa lta7t olfo9 b7al chkel iphone 11 , blassa dial lcam oblassa dial down nav
@@ -70,21 +68,21 @@ const createScreenOptions = ({ route }) => {
   },
 })*/
 
-const MyTabs = () => {
-  return (
-    <Tab.Navigator
-      screenOptions = {createScreenOptions}
-      tabBarOptions = {{
-        activeTinColor = "tomato",
-        inactiveTinColor = "gray",
-      }}
-    >
-      <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
-      <Tab.Screen name="Map" component={MapScreen} />
-    </Tab.Navigator>
-  )
-}
+// const MyTabs = () => {
+//   return (
+//     <Tab.Navigator
+//       screenOptions = {createScreenOptions}
+//       tabBarOptions = {{
+//         activeTinColor = "tomato",
+//         inactiveTinColor = "gray",
+//       }}
+//     >
+//       <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+//       <Tab.Screen name="Settings" component={SettingsScreen} />
+//       <Tab.Screen name="Map" component={MapScreen} />
+//     </Tab.Navigator>
+//   )
+// }
 
 
 export default function App() {
@@ -105,9 +103,7 @@ if(!oswaldLoaded || !latoLoaded){
       <ThemeProvider theme={theme}>
       <LocationContextProvider>
         <RestaurantsContextProvider>
-          <NavigationContainer>
-            <MyTabs />
-          </NavigationContainer>
+            <Navigation />
         </RestaurantsContextProvider>
         </LocationContextProvider>
       </ThemeProvider>
