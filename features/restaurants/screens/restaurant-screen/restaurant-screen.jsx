@@ -6,7 +6,8 @@ import styled from 'styled-components/native';
 import { FlatList } from 'react-native';
 import { Spacer } from '../../../../components/spacer/spacer.component';
 import { SafeArea } from '../../../../components/safe-area/safe-area.component';
-
+import { useContext } from 'react';
+import { RestaurantsContext } from '../../../../services/restaurants/restaurants.context';
 
 const SearchContainer = styled.View`
   padding : ${(props) => props.theme.space[3]};
@@ -23,13 +24,14 @@ const RestaurantList = styled(FlatList).attrs({
 
 
 export const RestaurantsScreen = () => {
+  const restaurantsContext = useContext(RestaurantsContext);
   return (
     <SafeArea>
       <SearchContainer>
         <Searchbar />
       </SearchContainer>
       <RestaurantList
-        data={[1,2,3]}
+        data= { restaurantsContext.restaurants }
         renderItem = {() => <>
                         <Spacer position="bottom" size="large">
                         <RestaurantInfoCard />

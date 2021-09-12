@@ -10,6 +10,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeArea } from './components/safe-area/safe-area.component';
 import { Ionicons } from 'react-native-vector-icons/Ionicons';
 
+import { RestaurantsContextProvider } from './services/services/restaurants.context';
 //safe areaview katkhli lik blassa lta7t olfo9 b7al chkel iphone 11 , blassa dial lcam oblassa dial down nav
 //ila gama drna flex : 1 , kib9a kikber 3la 7ssab lcontent , but flex 1 , kiyakhd all screen , without overflow
 //but safe irea view gama kayna f android
@@ -101,9 +102,11 @@ if(!oswaldLoaded || !latoLoaded){
   return (
     <>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <MyTabs />
-        </NavigationContainer>
+        <RestaurantsContextProvider>
+          <NavigationContainer>
+            <MyTabs />
+          </NavigationContainer>
+        </RestaurantsContextProvider>
       </ThemeProvider>
       <StatusBar style="auto" />
     </>
