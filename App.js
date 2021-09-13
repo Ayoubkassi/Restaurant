@@ -11,6 +11,7 @@ import { Navigation } from './infrastructure/navigation/index';
 import { RestaurantsContextProvider } from './services/services/restaurants.context';
 import { LocationContextProvider } from './services/location/location.context';
 import { FavouritesContextProvider } from './services/favourites/favourites.context';
+import { AuthenticationContextProvider } from './services/authentication/authentication.context';
 
 import * as firebase from 'firebase';
 //safe areaview katkhli lik blassa lta7t olfo9 b7al chkel iphone 11 , blassa dial lcam oblassa dial down nav
@@ -98,19 +99,7 @@ firebase.initializeApp(firebaseConfig);
 
 export default function App() {
 
-  const [isAuthenticated , setIsAuthenticated] = useState(false);
 
-  useEffect(()=>{
-    setTimeout(() => {
-    firebase.auth().signInWithEmailAndPassword("email","password")
-      .then((user) => {
-          setIsAuthenticated(true);
-      }).catch((err) => {
-        console.log(err);
-      })
-    }, 2000
-    );
-  },[]);
 
 const [oswaldLoaded] = useOswald({
   Oswald_400Regular,
@@ -123,13 +112,14 @@ const [latoLoaded] = useLato({
 if(!oswaldLoaded || !latoLoaded){
   return null;
 }
-if(!isAuthenticated){
-  return null;
-}
+// if(!isAuthenticated){
+//   return null;
+// }
   return (
 
   <>
     <ThemeProvider theme={theme}>
+      <AuthenticationContextProvider>
         <FavouritesContextProvider>
             <LocationContextProvider>
               <RestaurantsContextProvider>
@@ -137,6 +127,7 @@ if(!isAuthenticated){
               </RestaurantsContextProvider>
             </LocationContextProvider>
           </FavouritesContextProvider>
+        </AuthenticationContextProvider>
       </ThemeProvider>
       <StatusBar style="auto" />
   </>
