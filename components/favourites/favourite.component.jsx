@@ -9,20 +9,26 @@ const FavouriteButton = styled(TouchableOpacity)`
   /* background-color : transparent;
   border-color : #22232a; */
   position : absolute;
-  top : 10px;
-  right : 10px;
-  width : 64px;
+  top : 25px;
+  right : 25px;
+  /*width : 64px;*/
   z-index : 9;
 `;
 
-export const Favourite = () => {
-  const { favourites , addFavourites , removeFavourites } = useContext(FavouritesContext);
+export const Favourite = ({ restaurant }) => {
+  const { favourites , addToFavourites , removeFromFavourites } = useContext(FavouritesContext);
+
+  const isFavourite = favourites.find((r) => r.placeId === restaurant.placeId);
   return (
-    <FavouriteButton>
+    <FavouriteButton
+    onPress={() => !isFavourite ? addToFavourites(restaurant) : removeFromFavourites(restaurant) }
+    >
       <AntDesign
-        name="heart"
+        name={
+          isFavourite ? "heart" : "hearto"
+        }
         size={24}
-        color ="red"
+        color ={ isFavourite ? "red" : "white" }
       />
     </FavouriteButton>
   );
