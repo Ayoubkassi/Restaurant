@@ -3,7 +3,7 @@ import React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { SafeArea } from '../../components/safe-area/safe-area.component';
 import { Ionicons } from 'react-native-vector-icons/Ionicons';
-import { MapScreen  } from '../../features/restaurants/screens/map-screen/map-screen';
+import { MapScreen  } from '../../features/maps/screens/map-screen/map-screen';
 import { SettingsScreen  } from '../../features/restaurants/screens/setting-screen/setting-screen';
 import { RestaurantsNavigator } from './restaurants.navigator';
 
