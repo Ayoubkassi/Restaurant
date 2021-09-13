@@ -13,12 +13,14 @@ export const AccountScreen = ({ navigation }) => {
        <AccountContainer>
         <AuthButton
           icon="lock-open-outline"
+          mode="contained"
           onPress={()=> navigation.navigate('Login')}
         >Login</AuthButton>
 
         <Spacer size="large">
         <AuthButton
-          icon="lock-open-outline"
+          icon="email"
+          mode="contained"
           onPress={()=> navigation.navigate('Register')}
         >Register</AuthButton>
         </Spacer>
