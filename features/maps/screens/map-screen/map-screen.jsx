@@ -39,14 +39,18 @@ export const MapScreen = () => {
           }}
         >
           { restaurants.map((restaurant)=> {
-            return <MapView.Marker
+            return (
+                  <MapView.Marker
+                    key = {restaurant.name}
+                    title = {restaurant.name}
                     coordinate = {{
-                      longitude : ,
-                      latitude :
+                      longitude : restaurant.geometry.location.lng,
+                      latitude : restaurant.geometry.loaction.lat,
                     }}
-                  >
+                   />
 
-                  </MapView.Marker>;
+                 );
+
           }) }
         </Map>
     </>
