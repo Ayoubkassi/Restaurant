@@ -1,4 +1,4 @@
-import  React from 'react';
+import  React , { useState, useEffect } from 'react';
 import { Text, View, StyleSheet , Platform , StatusBar } from 'react-native';
 import { ThemeProvider } from 'styled-components/native';
 import { theme } from './infrastructure/theme/index';
@@ -11,6 +11,8 @@ import { Navigation } from './infrastructure/navigation/index';
 import { RestaurantsContextProvider } from './services/services/restaurants.context';
 import { LocationContextProvider } from './services/location/location.context';
 import { FavouritesContextProvider } from './services/favourites/favourites.context';
+
+import * as firebase from 'firebase';
 //safe areaview katkhli lik blassa lta7t olfo9 b7al chkel iphone 11 , blassa dial lcam oblassa dial down nav
 //ila gama drna flex : 1 , kib9a kikber 3la 7ssab lcontent , but flex 1 , kiyakhd all screen , without overflow
 //but safe irea view gama kayna f android
@@ -86,7 +88,29 @@ const createScreenOptions = ({ route }) => {
 // }
 
 
+const firebaseConfig = {
+  apiKey : ,
+};
+
+if(!firebase.apps.length){
+firebase.initializeApp(firebaseConfig);
+}
+
 export default function App() {
+
+  const [isAuthenticated , setIsAuthenticated] = useState(false);
+
+  useEffect(()=>{
+    setTimeout(() => {
+    firebase.auth().signInWithEmailAndPassword("email","password")
+      .then((user) => {
+          setIsAuthenticated(true);
+      }).catch((err) => {
+        console.log(err);
+      })
+    }, 2000
+    );
+  },[]);
 
 const [oswaldLoaded] = useOswald({
   Oswald_400Regular,
@@ -99,8 +123,11 @@ const [latoLoaded] = useLato({
 if(!oswaldLoaded || !latoLoaded){
   return null;
 }
+if(!isAuthenticated){
+  return null;
+}
   return (
-    
+
   <>
     <ThemeProvider theme={theme}>
         <FavouritesContextProvider>
