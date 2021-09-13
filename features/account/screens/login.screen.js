@@ -13,7 +13,7 @@ import { Spacer } from '../../../components/spacer/spacer.component';
 import { AuthenticationContext } from '../../../services/authentication/authentication.context';
 
 
-export const LoginScreen = () => {
+export const LoginScreen = ({ navigation }) => {
 
   const [email , setEmail] = useState('');
   const [password , setPassword] = useState('');
