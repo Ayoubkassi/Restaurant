@@ -4,6 +4,7 @@ import { SafeArea } from '../../../../components/safe-area/safe-area.component';
 import MapView from 'react-native-maps';
 import styled from 'styled-components/native';
 import { Search } from '../../components/search.component';
+import { MapCallout } from '../../components/map-callout.component';
 
 import { LocationContext } from '../../../../services/loaction/location.context';
 import { RestaurantsContext } from '../../../../services/restaurants/restaurants.context';
@@ -40,14 +41,18 @@ export const MapScreen = () => {
         >
           { restaurants.map((restaurant)=> {
             return (
-                  <MapView.Marker
+              <MapView.Marker
                     key = {restaurant.name}
                     title = {restaurant.name}
                     coordinate = {{
                       longitude : restaurant.geometry.location.lng,
                       latitude : restaurant.geometry.loaction.lat,
                     }}
-                   />
+                   >
+                      <MapView.Callout>
+                        <MapCallout restaurant={restaurant} />
+                      </MapView.Callout>
+              </MapView.Marker>
 
                  );
 
