@@ -10,7 +10,7 @@ import { useContext } from 'react';
 import { RestaurantsContext } from '../../../../services/restaurants/restaurants.context';
 import { ActivityIndicator , Colors } from 'react-native-paper';
 import { Search } from '../../components/search/search.component';
-
+import { FavouritesContext } from '../../../../services/favourites/favourites.context';
 
 const SearchContainer = styled.View`
   padding : ${(props) => props.theme.space[3]};
@@ -38,6 +38,7 @@ const Loading = styled(ActivityIndicator)`
 
 export const RestaurantsScreen = ({ navigation }) => {
   const { restaurants, isLoading , error } = useContext(RestaurantsContext);
+  const { favourites } = useContext(FavouritesContext);
 
 
   return (
