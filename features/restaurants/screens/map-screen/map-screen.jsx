@@ -6,7 +6,7 @@ import styled from 'styled-components/native';
 
 
 export const MapContainer = styled(MapView)`
-  height : 00%;
+  height : 100%;
 `;
 
 
