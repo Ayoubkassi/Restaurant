@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { NavigationContainer } from "@react-navigation/native";
+// import { NavigationContainer } from "@react-navigation/native";
 import { SafeArea } from '../../components/safe-area/safe-area.component';
 import { Ionicons } from 'react-native-vector-icons/Ionicons';
 import { MapScreen  } from '../../features/maps/screens/map-screen/map-screen';
