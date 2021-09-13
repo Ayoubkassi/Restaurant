@@ -7,6 +7,7 @@ import {
   AccountContainer,
   AuthButton,
   AuthInput,
+  ErrorContainer,
 } from '../components/account.styles';
 import { Spacer } from '../../../components/spacer/spacer.component';
 import { AuthenticationContext } from '../../../services/authentication/authentication.context';
@@ -44,9 +45,11 @@ export const LoginScreen = () => {
         </Spacer>
         { error.length &&
         <Spacer size="large">
-          <Text variant="error">
-            { error }
-          </Text>
+          <ErrorContainer>
+            <Text variant="error">
+              { error }
+            </Text>
+          </ErrorContainer>
         </Spacer>
          }
         <Spacer>
@@ -59,6 +62,12 @@ export const LoginScreen = () => {
           <AuthButton>
         </Spacer>
       </AccountContainer>
+
+      <Spacer>
+        <AuthButton mode="contained" onPress={() => navigation.goBack()}>
+          Back
+        </AuthButton>
+      </Spacer>
     </AccountBackground>
   );
 }
