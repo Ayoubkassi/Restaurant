@@ -12,19 +12,20 @@ import { ActivityIndicator , Colors } from 'react-native-paper';
 import { Search } from '../../components/search/search.component';
 import { FavouritesContext } from '../../../../services/favourites/favourites.context';
 import { FavouritesBar } from '../../../../components/favourites/favourites-bar.component';
+import { RestaurantList } from  '../../components/restaurant-list.styles';
 
 const SearchContainer = styled.View`
   padding : ${(props) => props.theme.space[3]};
 `;
 
-const RestaurantList = styled(FlatList).attrs({
-  contentConatinerStyle : {
-    padding : 16,
-  },
-})`
- /*margin-bottom : ${(props) => props.theme.space[5]}; */
- /*using this one up if we want to remove flex 1 from the SafeArea */
-`;
+// export const RestaurantList = styled(FlatList).attrs({
+//   contentConatinerStyle : {
+//     padding : 16,
+//   },
+// })`
+//  /*margin-bottom : ${(props) => props.theme.space[5]}; */
+//  /*using this one up if we want to remove flex 1 from the SafeArea */
+// `;
 
 const LoadingContainer = styled.View`
   position : absolute;
