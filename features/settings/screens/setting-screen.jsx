@@ -2,18 +2,41 @@ import React , {useContext} from 'react';
 import { View } from 'react-native';
 import { SafeArea } from '../../../../components/safe-area/safe-area.component';
 import {AuthenticationContext } from '../../../../services/authentication/authentication.context';
-import { List } from 'react-native-paper';
+import { List , Avatar } from 'react-native-paper';
 import styled from 'styled-components/native';
+import { Text } from '../../../../components/typography/text.component';
+import { Spacer } from '../../../../components/spacer/spacer.component';
+
+
 
 const ListItem = styled(List.Item)`
-  padding : 16px;
+  padding :  props.theme.space[3]};
+`;
+
+const AvatarContainer = styled.View`
+  align-items : center;
 `;
 
 export const SettingsScreen = ({ navigation }) => {
 
-  const { onLogout } = useContext(AuthenticationContext);
+  const { onLogout , user } = useContext(AuthenticationContext);
   return (
     <SafeArea>
+    <AvatarContainer>
+      <Avatar.Icon
+        size={180}
+        icon="human"
+        backgrounColor="#2182BD"
+       />
+
+       <Spacer position="top" size="large" >
+         <Text variant="caption">
+           { user.email }
+         </Text>
+       </Spacer>
+       
+      </AvatarContainer>
+
       <List.Section>
       <ListItem
         title="Favourites"
