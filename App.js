@@ -8,9 +8,9 @@ import { SafeArea } from './components/safe-area/safe-area.component';
 import { Ionicons } from 'react-native-vector-icons/Ionicons';
 
 import { Navigation } from './infrastructure/navigation/index';
-import { RestaurantsContextProvider } from './services/services/restaurants.context';
-import { LocationContextProvider } from './services/location/location.context';
-import { FavouritesContextProvider } from './services/favourites/favourites.context';
+// import { RestaurantsContextProvider } from './services/services/restaurants.context';
+// import { LocationContextProvider } from './services/location/location.context';
+// import { FavouritesContextProvider } from './services/favourites/favourites.context';
 import { AuthenticationContextProvider } from './services/authentication/authentication.context';
 
 import * as firebase from 'firebase';
@@ -126,13 +126,7 @@ if(!oswaldLoaded || !latoLoaded){
   <>
     <ThemeProvider theme={theme}>
       <AuthenticationContextProvider>
-        <FavouritesContextProvider>
-            <LocationContextProvider>
-              <RestaurantsContextProvider>
-                  <Navigation />
-              </RestaurantsContextProvider>
-            </LocationContextProvider>
-          </FavouritesContextProvider>
+            <Navigation />
         </AuthenticationContextProvider>
       </ThemeProvider>
       <StatusBar style="auto" />
