@@ -4,7 +4,7 @@ import React from 'react';
 import { SafeArea } from '../../components/safe-area/safe-area.component';
 import { Ionicons } from 'react-native-vector-icons/Ionicons';
 import { MapScreen  } from '../../features/maps/screens/map-screen/map-screen';
-import { SettingsScreen  } from '../../features/restaurants/screens/setting-screen/setting-screen';
+import { SettingsNavigator  } from './settings.navigator';
 import { RestaurantsNavigator } from './restaurants.navigator';
 
 import { RestaurantsContextProvider } from '../../services/services/restaurants.context';
@@ -39,7 +39,7 @@ export const AppNavigator = () => {
                 }}
               >
                 <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
-                <Tab.Screen name="Settings" component={SettingsScreen} />
+                <Tab.Screen name="Settings" component={SettingsNavigator} />
                 <Tab.Screen name="Map" component={MapScreen} />
               </Tab.Navigator>
 
