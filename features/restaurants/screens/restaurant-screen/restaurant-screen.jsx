@@ -13,6 +13,7 @@ import { Search } from '../../components/search/search.component';
 import { FavouritesContext } from '../../../../services/favourites/favourites.context';
 import { FavouritesBar } from '../../../../components/favourites/favourites-bar.component';
 import { RestaurantList } from  '../../components/restaurant-list.styles';
+import { FadeInView } from '../../../../components/animations/fade.animation';
 
 const SearchContainer = styled.View`
   padding : ${(props) => props.theme.space[3]};
@@ -73,14 +74,15 @@ export const RestaurantsScreen = ({ navigation }) => {
                       onPress={()=> navigation.navigate("RestaurantDetail", {restaurant : item})}
                     >
                         <Spacer position="bottom" size="large">
-                          <RestaurantInfoCard restaurant={item} />
+                          <FadeInView>
+                            <RestaurantInfoCard restaurant={item} />
+                          </FadeInView>
                         </Spacer>
                     </TouchableOpacity>
                       );
                       }}
         keyExtractor = {(item) => item.name }
       />
-
     </SafeArea>
   );
 }
