@@ -10,6 +10,7 @@ import {CameraScreen } from './camera.screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from 'react-navigation/native';
 
+//Next step will be adding Payment with Stripe and Releasing app to Store
 //useEfect don't work every time we render
 //but evry time our screen back in focus we change or render the effect
 
