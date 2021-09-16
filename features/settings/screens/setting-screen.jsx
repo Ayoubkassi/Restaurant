@@ -1,4 +1,4 @@
-import React , {useContext} from 'react';
+import React , {useContext , useEffect  ,useState} from 'react';
 import { View , TouchableOpacity } from 'react-native';
 import { SafeArea } from '../../../../components/safe-area/safe-area.component';
 import {AuthenticationContext } from '../../../../services/authentication/authentication.context';
@@ -7,7 +7,11 @@ import styled from 'styled-components/native';
 import { Text } from '../../../../components/typography/text.component';
 import { Spacer } from '../../../../components/spacer/spacer.component';
 import {CameraScreen } from './camera.screen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from 'react-navigation/native';
 
+//useEfect don't work every time we render
+//but evry time our screen back in focus we change or render the effect
 
 const ListItem = styled(List.Item)`
   padding :  props.theme.space[3]};
@@ -20,17 +24,36 @@ const AvatarContainer = styled.View`
 export const SettingsScreen = ({ navigation }) => {
 
   const { onLogout , user } = useContext(AuthenticationContext);
+  const [ photo , setPhoto ] = useState(null);
+
+  const getProfilePicture = async (currentUser) => {
+    const photoUri = await AsyncStorage.getItem(`${currentUser.uid}-photo`);
+    setPhoto(photoUri);
+  };
+
+  useFocusEffect(()=> {
+    getProfilePicture(user);
+  }, [user])
+
   return (
     <SafeArea>
     <TouchableOpacity
       onPress={() => navigation.navigate("Camera")}
     >
     <AvatarContainer>
-      <Avatar.Icon
+      { !photo && <Avatar.Icon
         size={180}
         icon="human"
         backgrounColor="#2182BD"
        />
+     }
+
+     { !photo && <Avatar.Image
+       size={180}
+       source={{ uri : photo }}
+       backgrounColor="#2182BD"
+      />
+    }
        </TouchableOpacity>
 
        <Spacer position="top" size="large" >
