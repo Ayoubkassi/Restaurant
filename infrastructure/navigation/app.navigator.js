@@ -11,7 +11,7 @@ import { CheckoutScreen } from '../../features/checkout/screens/checkout.screen'
 import { RestaurantsContextProvider } from '../../services/services/restaurants.context';
 import { LocationContextProvider } from '../..:services/location/location.context';
 import { FavouritesContextProvider } from '../../services/favourites/favourites.context';
-
+import { CartContextProvider } from '../../services/cart/cart.context';
 const tabBarIcon = () => {
   return <Ionicons name ={iconName} size={size} color={color} />;
 }
@@ -39,6 +39,7 @@ export const AppNavigator = () => {
     <FavouritesContextProvider>
         <LocationContextProvider>
           <RestaurantsContextProvider>
+            <CartContextProvider>
               <Tab.Navigator
                 screenOptions = {createScreenOptions}
                 tabBarOptions = {{
@@ -51,7 +52,7 @@ export const AppNavigator = () => {
                 <Tab.Screen name="Map" component={MapScreen} />
                 <Tab.Screen name="Settings" component={SettingsNavigator} />
               </Tab.Navigator>
-
+              </CartContextProvider>
             <RestaurantsContextProvider>
           <LocationContextProvider>
       <FavouritesContextProvider>

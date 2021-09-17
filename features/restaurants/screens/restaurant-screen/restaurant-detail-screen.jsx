@@ -1,9 +1,11 @@
-import React , { useState } from 'react';
+import React , { useState , useContext} from 'react';
 import { RestaurantInfoCard } from '../../components/restaurant-info/restaurant-info-card.component';
 import { SafeArea } from '../../../../components/safe-area/safe-area.component';
 import { List } from 'react-native-paper';
 import { ScrollView } from 'react-native';
-
+import { Spacer } from '../../../components/spacer/spacer.component';
+import { OrderButton } from '../../components/restaurant-list.styles';
+import { CartContext } from '../../../services/cart/cart.context';
 
 export const RestaurantDetailScreen = ({ route }) => {
     const [breakfastExpanded , setBreakfastExpanded] = useState(false);
@@ -12,6 +14,7 @@ export const RestaurantDetailScreen = ({ route }) => {
     const [drinksExpanded , setDrinksExpanded] = useState(false);
 
     const { restaurant } = route.params;
+    const { cart , addToCart } = useContext(CartContext);
 
     <SafeArea>
      <ScrollView>
@@ -53,8 +56,18 @@ export const RestaurantDetailScreen = ({ route }) => {
         <List.Item  title="Jiby dial Nufi"/>
         <List.Item  title="Abtal dial doudou"/>
       </List.Accordion>
-
       </ScrollView>
+      <Spacer position="bottom" size="large">
+        <OrderButton
+        mode="contained"
+        icon="cash-usd"
+        onPress={()=> {
+          addToCart({item : "special", price : 1299 })
+        }}
+        >
+          ORDER ONLY SPECIAL 12.99!
+        </OrderButton>
+      </Spacer>
     </SafeArea>
   );
 };
