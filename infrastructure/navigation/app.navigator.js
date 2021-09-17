@@ -6,6 +6,7 @@ import { Ionicons } from 'react-native-vector-icons/Ionicons';
 import { MapScreen  } from '../../features/maps/screens/map-screen/map-screen';
 import { SettingsNavigator  } from './settings.navigator';
 import { RestaurantsNavigator } from './restaurants.navigator';
+import { CheckoutScreen } from '../../features/checkout/screens/checkout.screen';
 
 import { RestaurantsContextProvider } from '../../services/services/restaurants.context';
 import { LocationContextProvider } from '../..:services/location/location.context';
@@ -13,6 +14,13 @@ import { FavouritesContextProvider } from '../../services/favourites/favourites.
 
 const tabBarIcon = () => {
   return <Ionicons name ={iconName} size={size} color={color} />;
+}
+
+const TAB_ICON = {
+  Restaurants : "md-restaurant",
+  Checkout : "md-cart",
+  Map : "md-map",
+  Settings : "md-settings",
 }
 
 const createScreenOptions = ({ route }) => {
@@ -39,8 +47,9 @@ export const AppNavigator = () => {
                 }}
               >
                 <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
-                <Tab.Screen name="Settings" component={SettingsNavigator} />
+                <Tab.Screen name="Checkout" component={CheckoutScreen} />
                 <Tab.Screen name="Map" component={MapScreen} />
+                <Tab.Screen name="Settings" component={SettingsNavigator} />
               </Tab.Navigator>
 
             <RestaurantsContextProvider>
